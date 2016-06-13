@@ -2,6 +2,7 @@ import React from 'react'
 import { declare, type } from 'packs'
 import Radium from 'radium'
 import _ from 'lodash'
+import Markdown from 'react-remarkable'
 import FormField, { FIELD_TYPES } from '../global/components/FormField'
 import Button from '../global/components/Button'
 import hash from '../global/services/stringHash'
@@ -109,12 +110,12 @@ export default class Form extends React.Component {
           instructions &&
           <div style={[
             styles.panel,
-            styles.padding(1),
+            styles.padding(0.01, 1, 0.01, 1),
             {
               background: '#ffe'
             }
           ]}>
-            {instructions}
+            <Markdown source={instructions} />
           </div>
         }
         <div style={[

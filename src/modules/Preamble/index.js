@@ -38,7 +38,7 @@ const RatingPractice = Radium(({ text, instruct, responseText, aspect, table, pu
       <Rating
         aspect={aspect}
         push={push}
-        instructions={[instruct.replace(/\[aspect\]/, aspect.text)]}
+        instructions={[instruct]}
         instruct_conditions={[true, false]}
         key={aspect.text}
       />
@@ -172,6 +172,7 @@ class Consent extends React.Component {
         aspects={personal_aspects}
         tradeoff={personal_tradeoff}
       />,
+      <Intro text={this.props.policy_intro} />,
       <RatingPractice
         text={
           this.props.policy_rating_text_i
@@ -234,7 +235,7 @@ class Consent extends React.Component {
           )
         }
         {
-          step === 0 &&
+          (step === 0 || step === 4) &&
           <div style={[styles.row, styles.buttons]}>
             <Button
               text={this.props.continue}

@@ -2,9 +2,6 @@ import React, { PropTypes } from 'react'
 import _ from 'lodash'
 import Radium from 'radium'
 
-import smiley from '../images/smiley.svg'
-import frowny from '../images/frowny.svg'
-
 @Radium
 class Handle extends React.Component {
   static propTypes = {
@@ -23,10 +20,10 @@ class Handle extends React.Component {
         fill="#fff"
         fillOpacity="0.9"
         d={
-          `M ${position- (width/2)},0 
-          l ${width},0 l 0,${height/2} 
-          l -${width/2},${height/2} 
-          l -${width/2},-${height/2} 
+          `M ${position- (width/2)},0
+          l ${width},0 l 0,${height/2}
+          l -${width/2},${height/2}
+          l -${width/2},-${height/2}
           Z`
         }
       ></path>
@@ -118,7 +115,7 @@ class Slider extends React.Component {
         onMouseDown={this.handleMouseDown.bind(this)}
       >
         <g transform={`translate(${sideOffset},${top})`}>
-          <rect 
+          <rect
             y={0}
             width={range}
             height={height}
@@ -128,7 +125,7 @@ class Slider extends React.Component {
             ref={(c) => this._bar = c}
           >
           </rect>
-          <rect 
+          <rect
             y={0}
             width={Math.abs(min - position)}
             height={height}
@@ -145,7 +142,7 @@ class Slider extends React.Component {
                   <rect
                     x={Math.abs(min - n)}
                     y={height + 1}
-                    width={0.1}
+                    width={0.2}
                     height={1}
                     style={[styles.tick]}
                   ></rect>
@@ -162,7 +159,7 @@ class Slider extends React.Component {
           <rect
             x={sideOffset}
             y={1}
-            width={0.1}
+            width={0.2}
             height={height + 5}
             style={[styles.tick]}
           ></rect>
@@ -170,20 +167,20 @@ class Slider extends React.Component {
             x={sideOffset}
             y={1}
             width={13}
-            height={0.1}
+            height={0.2}
             style={[styles.tick]}
           ></rect>
           <rect
             x={range + sideOffset - 13}
             y={1}
             width={13}
-            height={0.1}
+            height={0.2}
             style={[styles.tick]}
           ></rect>
           <rect
             x={range + sideOffset}
             y={1}
-            width={0.1}
+            width={0.2}
             height={height + 5}
             style={[styles.tick]}
           ></rect>
@@ -202,14 +199,14 @@ class Slider extends React.Component {
           <rect
             x={sideOffset + range * .25}
             y={0}
-            width={0.1}
+            width={0.2}
             height={height + 6}
             style={[styles.tick]}
           ></rect>
           <rect
             x={sideOffset + range * .75}
             y={0}
-            width={0.1}
+            width={0.2}
             height={height + 6}
             style={[styles.tick]}
           ></rect>
@@ -242,7 +239,7 @@ const styles = {
     cursor: 'pointer'
   },
   tick: {
-    fill: '#333' 
+    fill: '#333'
   },
   text: {
     fontSize: '.16rem',
@@ -251,19 +248,19 @@ const styles = {
   },
   labelLeft: {
     fontSize: '.16rem',
-    fontStyle: 'italic', 
+    // fontStyle: 'italic',
     textAnchor: 'start',
     userSelect: 'none'
   },
   labelMiddle: {
     fontSize: '.16rem',
-    fontStyle: 'italic', 
+    // fontStyle: 'italic',
     textAnchor: 'middle',
     userSelect: 'none'
   },
   labelRight: {
     fontSize: '.16rem',
-    fontStyle: 'italic', 
+    // fontStyle: 'italic',
     textAnchor: 'end',
     userSelect: 'none'
   },
@@ -276,7 +273,7 @@ const styles = {
   },
   labelBottomRight: {
     fontSize: '.16rem',
-    fontStyle: 'italic', 
+    // fontStyle: 'italic',
     textAnchor: 'end',
     dominantBaseline: 'hanging',
     userSelect: 'none'

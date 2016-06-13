@@ -5,7 +5,6 @@ import Consent from './Consent'
 import Example from './Example'
 import Form from './Form'
 import Headers from './Headers'
-import Message from './Message'
 import Mirror from './Mirror'
 import MostLeast from './MostLeast'
 import Preamble from './Preamble'
@@ -25,7 +24,6 @@ export default {
   Example,
   Form,
   Headers,
-  Message,
   Mirror,
   MostLeast,
   Preamble,

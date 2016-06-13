@@ -1,5 +1,10 @@
 export default (bucket, i) => [
   {
+    type: 'Bernoulli',
+    p: 0.5,
+    variable: 'coin'
+  },
+  {
     type: 'Rating',
     instructions: [
       require('./text/policy_rating_instruct.md'),
@@ -23,7 +28,7 @@ export default (bucket, i) => [
       rating: `$rating_${bucket}${i + 1}`,
       code: `${bucket}${i + 1}`
     }
-  },{
+  }, {
     type: 'Rating',
     instructions: [
       require('./text/policy_rating_instruct.md'),

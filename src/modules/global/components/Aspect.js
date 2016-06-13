@@ -31,19 +31,19 @@ class Aspect extends React.Component {
           </span>
           <p style={[styles.text]}>
             {Format.capitalize(text)}
-            <span>
-              <b>{` ${deltaText} `}</b>
-              {
-                delta !== 0 &&
-                <span style={[styles.delta]}>
-                {
-                  delta > 0 ?
-                  '+' + String(delta) :
-                  String(delta)
-                }
-                </span>
-              }
+            <span style={[styles.deltaText]}>
+              {` ${deltaText} `}
             </span>
+            {
+              delta !== 0 &&
+              <span style={[styles.delta]}>
+              {
+                delta > 0 ?
+                '+' + String(delta) :
+                String(delta)
+              }
+              </span>
+            }
           </p>
         </div>
         <ZoomBar
@@ -65,7 +65,8 @@ const styles = {
   },
   text: {
     fontSize: '1.25rem',
-    fontStyle: 'italic'
+    fontStyle: 'italic',
+    fontWeight: 'bold',
   },
   rating: {
     float: 'right',
@@ -75,9 +76,11 @@ const styles = {
     paddingLeft: 15,
     fontWeight: 'bold'
   },
+  deltaText: {
+    fontWeight: 'normal'
+  },
   delta: {
     color: '#fff',
-    fontWeight: 'bold',
     fontStyle: 'normal',
     paddingTop: 3,
     paddingRight: 5,

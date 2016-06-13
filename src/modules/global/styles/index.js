@@ -23,21 +23,6 @@ export default {
     boxShadow: '0.2rem 0.2rem 1rem rgba(0, 0, 0, 0.1)',
     background: '#fff'
   },
-  container: {
-    fontSize: '1rem',
-    boxSizing: 'border-box',
-    width: '100%',
-    borderRadius: 15,
-    boxShadow: '2px 2px 4px #ddd',
-    marginRight: 'auto',
-    marginLeft: 'auto',
-    marginBottom: 60,
-    paddingTop: '1rem',
-    paddingRight: '1rem',
-    paddingBottom: '1rem',
-    paddingLeft: '1rem',
-    background: '#fff'
-  },
   heading: {
     fontSize: '1rem',
     fontWeight: 'bold'

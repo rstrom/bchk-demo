@@ -3,6 +3,7 @@ import Radium from 'radium'
 import _ from 'lodash'
 import { declare, type } from 'packs'
 import Markdown from 'react-remarkable'
+import Format from '../global/services/format'
 import identify from '../global/services/stringHash'
 import Rate from './RateAspect'
 import Button from '../global/components/Button'
@@ -114,7 +115,9 @@ class Index extends React.Component {
             source={
               instructions
                 .replace(
-                  /\[aspect\]/, aspect.text.replace(/\s+$/, '')
+                  /\[aspect\]/, Format.capitalize(
+                    aspect.text.replace(/\s+$/, '')
+                  )
                 )
             }
           />

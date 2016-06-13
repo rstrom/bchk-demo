@@ -33,7 +33,7 @@ class RateAspect extends React.Component {
             </strong>
             {
               !isNaN(aspect.rating) &&
-              <span style={{ float:'right', fontWeight: 'bold' }}>
+              <span style={[styles.rating]}>
                 {Number(aspect.rating)}
               </span>
             }
@@ -53,6 +53,7 @@ class RateAspect extends React.Component {
           &&
           <div style={[styles.button]}>
             <Button
+              align={'flex-end'}
               text={confirmText}
               handler={() => handleConfirm(aspect)}
             />
@@ -102,19 +103,22 @@ const styles = {
   container: {
     ...gstyles.panel,
     ...gstyles.padding(2),
-    backgroundColor: '#fff',
-    userSelect: 'none',
-    overflow: 'auto',
-    zoom: 1
+    backgroundColor: '#fff'
   },
   heading: {
     marginBottom: '1rem',
+    fontSize: '1.25rem',
+    fontStyle: 'italic',
     overflow: 'auto',
     zoom: 1
   },
+  rating: {
+    float:'right',
+    fontWeight: 'bold',
+    fontStyle: 'normal'
+  },
   button: {
-    marginTop: '2rem',
-    float: 'right'
+    marginTop: '2rem'
   }
 }
 

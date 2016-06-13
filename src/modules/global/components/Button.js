@@ -28,7 +28,7 @@ class Button extends React.Component {
       ...styles.button,
       color,
       backgroundColor: background,
-      border: '1px solid' + border,
+      border: '1px solid ' + border,
       borderRadius: '0.25rem',
       ':hover': {
         color: hoverFontColor,
