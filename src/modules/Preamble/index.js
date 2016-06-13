@@ -8,11 +8,32 @@ import Format from '../global/services/format'
 import Rating from '../Rating'
 import Tradeoff from '../Tradeoff'
 
-const Intro = ({ text }) => (
-  <Markdown
-    source={text}
-  />
-)
+const Container = Radium(({ children }) => (
+  <div style={[styles.container]}>
+  {
+    children
+  }
+  </div>
+))
+
+let Intro = Radium(({ text, next, push }) => (
+  <Container>
+    <Markdown
+      source={text}
+    />
+    <div style={[styles.row, styles.buttons]}>
+      <Button
+        text={next}
+        handler={() => push({})}
+      />
+    </div>
+  </Container>
+))
+
+Intro.propTypes = {
+  text: declare(type.string),
+  next: declare(type.string)
+}
 
 const BinaryScreen = Radium(({ children, first }) => (
   <div style={[styles.screen]}>
@@ -22,19 +43,12 @@ const BinaryScreen = Radium(({ children, first }) => (
   </div>
 ))
 
-const RatingPractice = Radium(({ text, instruct, responseText, aspect, table, push }) => (
-  <div>
+let RatingPractice = Radium(({ text, instruct, aspect, push }) => (
+  <Container>
     <Markdown
       source={text}
     />
-    <BinaryScreen first={!isNaN(table[`rating_${aspect.code}`])}>
-      <Markdown
-        source={
-          responseText
-            .replace(/\[aspect\]/, aspect.text)
-            .replace(/\[rating\]/, table[`rating_${aspect.code}`])
-        }
-      />
+    <div style={[styles.screen]}>
       <Rating
         aspect={aspect}
         push={push}
@@ -42,21 +56,28 @@ const RatingPractice = Radium(({ text, instruct, responseText, aspect, table, pu
         instruct_conditions={[true, false]}
         key={aspect.text}
       />
-    </BinaryScreen>
-  </div>
+    </div>
+  </Container>
 ))
 
-const TradeoffPractice = Radium(({ text, instruct, edgeCaseText, aspects, tradeoff, table, push }) => {
-  const edge = table[`triple-1_${aspects[0].code}_${aspects[1].code}_flag`]
-  const ratedAspects = aspects
-    .map((aspect) => {
-      return {
-        ...aspect,
-        rating: table[`rating_${aspect.code}`]
-      }
+RatingPractice.propTypes = {
+  text: declare(type.string),
+  instruct: declare(type.string),
+  aspect: declare(
+    type.Object({
+      text: type.string,
+      color: type.string,
+      code: type.string
     })
+  )
+}
+
+let TradeoffPractice = Radium(({ text, instruct, edgeCaseText, aspects, tradeoff, push }) => {
+  const edge = (aspects[0].rating < 8 && aspects[1].rating > 92) ||
+    (aspects[1].rating < 8 && aspects[0].rating > 92)
+
   return (
-    <div>
+    <Container>
       <Markdown
         source={
           text
@@ -73,26 +94,63 @@ const TradeoffPractice = Radium(({ text, instruct, edgeCaseText, aspects, tradeo
           />
           <Button
             text={'Continue'}
-            handler={push}
+            handler={() => push({})}
           />
         </div>
         <Tradeoff
           tradeoff_range_left={tradeoff[0]}
           tradeoff_range_right={tradeoff[1]}
           text_instruct={[instruct]}
-          aspects={ratedAspects}
+          aspects={aspects}
           push={push}
         />
       </BinaryScreen>
-    </div>
+    </Container>
   )
 })
 
-const Understand = ({ text }) => (
-  <Markdown
-    source={text}
-  />
+TradeoffPractice.propTypes = {
+  text: declare(type.string),
+  instruct: declare(type.string),
+  edgeCaseText: declare(type.string),
+  tradeoff: declare(type.Array(type.number)),
+  aspects: declare(
+    type.Array(
+      type.Object({
+        text: type.string,
+        color: type.string,
+        code: type.string
+      })
+    )
+  )
+}
+
+let Understand = ({ text, again, ok, push, reinsert }) => (
+  <Container>
+    <Markdown
+      source={text}
+    />
+    <div style={[styles.row, styles.buttons]}>
+      <Button
+        text={again}
+        handler={() => {
+          history.go(-8)
+        }}
+      />
+      <Button
+        modStyle={{marginLeft: '1rem' }}
+        text={ok}
+        handler={() => push({})}
+      />
+    </div>
+  </Container>
 )
+
+Understand.propTypes = {
+  text: declare(type.string),
+  again: declare(type.string),
+  ok: declare(type.string)
+}
 
 @Radium
 class Consent extends React.Component {
@@ -292,4 +350,9 @@ const styles = {
   }
 }
 
-export default Consent
+export default {
+  Intro,
+  RatingPractice,
+  TradeoffPractice,
+  Understand
+}
