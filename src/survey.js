@@ -4,10 +4,9 @@ import _ from 'lodash'
 import Triple from './triple'
 
 const start = [{
-  type: 'URLParams',
-  simulate: {
-    workerID: 'worker' + Date.now()
-  }
+  type: 'PreIntro',
+  text: require('./text/demo_intro.md'),
+  next: 'Continue'
 }, {
   type: 'Shuffle',
   bucket: 'a',
