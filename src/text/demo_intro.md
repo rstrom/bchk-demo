@@ -1,8 +1,10 @@
 ## Overview
 
-The survey consists of two types of questions. In the first type of question, we ask for ratings of various aspects of **your life** or the **lives people in your nation**, based on the past year (12 months). We call these questions **personal ratings** and **policy ratings**, respectively. In the second type of question, we elicit a choice between two options which would change some aspect of **your life**, or the **lives of people in your nation**, during the next year. We call these questions **personal decisions** and **policy decisions**, respectively.
+The survey uses two types of questions to elicit respondents’ subjective well-being and preferences for various “fundamental aspects of well-being.” We use a repetitive design to learn as much as possible about respondents’ preferences.
 
-The survey uses a repetitive design to learn as much as possible about the respondent’s preferences. This demonstration version includes **personal ratings** and **personal decisions** for fifteen aspects of well-being:
+In the subjective well-being questions, we ask for ratings of various aspects of **your life** or the **lives people in your nation**, based on the past year (12 months). We call these personal ratings and policy ratings, respectively. In the stated preference questions, we elicit a choice between two options which would change some aspect of **your life**, or the **lives of people in your nation**, during the next year. We call these **personal decisions** and **policy decisions**, respectively.
+
+This demonstration version includes **personal ratings** and **personal decisions** for fifteen aspects of well-being:
 
 1. how much you like your home (house or apartment)
 2. you not being worried about money
