@@ -12,7 +12,8 @@ const start = [{
   type: 'Shuffle',
   bucket: 'a',
   n: 15,
-  aspects
+  aspects,
+  seed: false
 }, {
   type: 'Bernoulli',
   p: 0,

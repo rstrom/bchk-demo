@@ -29,13 +29,12 @@ class Aspect extends React.Component {
           <span style={[styles.rating]}>
             {Number(rating) + Number(delta)}
           </span>
-          <p style={[styles.text]}>
-            {Format.capitalize(text)}
-            <span style={[styles.deltaText]}>
-              {` ${deltaText} `}
-            </span>
-            {
-              delta !== 0 &&
+          {
+            delta !== 0 && <p style={[styles.text]}>
+              {Format.capitalize(text)}
+              <span style={[styles.deltaText]}>
+                {` ${deltaText} `}
+              </span>
               <span style={[styles.delta]}>
               {
                 delta > 0 ?
@@ -43,8 +42,16 @@ class Aspect extends React.Component {
                 String(delta)
               }
               </span>
-            }
-          </p>
+            </p>
+          }
+          {
+            delta === 0 && <p style={[styles.text]}>
+              {Format.capitalize(text)}
+              <span style={[styles.deltaText]}>
+                {` ${deltaText} `}
+              </span>
+            </p>
+          }
         </div>
         <ZoomBar
           position={rating}

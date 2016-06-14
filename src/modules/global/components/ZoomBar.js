@@ -73,7 +73,7 @@ class ZoomBar extends React.Component {
                     <circle
                       cx={position}
                       cy={top + 0.5 * height}
-                      r={12}
+                      r={14}
                     />
                   </clipPath>
                 </defs>
@@ -110,7 +110,7 @@ class ZoomBar extends React.Component {
                     <circle
                       cx={position}
                       cy={top + 0.5 * height}
-                      r={12}
+                      r={14}
                       fill={'none'}
                       stroke={'#000'}
                       strokeWidth={0.5}

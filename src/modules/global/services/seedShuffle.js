@@ -4,6 +4,8 @@ const XorShift = xorshift.constructor
 
 // @param {string} seed
 export default (arr, seed) => {
+  if (!seed) return arr
+
   const hash = md5(seed)
   const seed432 = [
     parseInt(hash.slice(24, 32), 32),
